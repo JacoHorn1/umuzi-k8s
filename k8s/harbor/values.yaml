@@ -1,0 +1,20 @@
+harborAdminPassword: "harbor42069"
+externalURL: https://harbor.jacoh.k8s-course.co.za
+expose:
+  type: ingress
+  tls:
+    enabled: true
+    certSource: auto
+    auto:
+      commonName: ""
+    secret:
+      secretName: "harbor"
+  ingress:
+    hosts:
+      core: harbor.jacoh.k8s-course.co.za
+    controller: default
+    kubeVersionOverride: ""
+    className: "nginx"
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
