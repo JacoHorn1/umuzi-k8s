@@ -21,6 +21,13 @@ spec:
   - host: jacoh.k8s-course.co.za
     http:
       paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: python-service
+            port:
+              number: 5000
       - path: /
         pathType: Prefix
         backend:
