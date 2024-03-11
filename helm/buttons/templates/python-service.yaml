@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.python.service.type }}
   ports:
     - port: {{ .Values.python.service.port }}
-      targetPort: {{ .Values.python.service.port }}
+      targetPort: http
       protocol: TCP
-      name: {{ .Values.python.service.port }}
+      name: http
   selector:
     app: {{ .Values.python.name }}
