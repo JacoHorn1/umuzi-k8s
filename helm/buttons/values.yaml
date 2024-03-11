@@ -24,10 +24,28 @@ ingress:
 imagePullSecrets:
   - name: your-regcred
 nginx:
+  image:
+    repository: harbor.jacoh.k8s-course.co.za/application/nginx
+    tag: v2
+  replicaCount: 1
   name: nginx
+  serverName: jacoh.k8s-course.co.za
+  rootPath: "/usr/share/nginx/html"
+  mountPath: "/etc/nginx/conf.d"
+  indexFiles:
+    - "index.html"
+    - "index.htm"
   service:
     type: ClusterIP
     port: 80
+
+resources: 
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi 
 python:
   name: python-service
   service:
