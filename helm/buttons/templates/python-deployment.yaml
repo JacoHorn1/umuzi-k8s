@@ -31,17 +31,6 @@ spec:
           imagePullPolicy: {{ .Values.python.image.pullPolicy }}
           env:
             {{- toYaml .Values.python.envs | nindent 10 }}
-           - name: DB_HOST
-             value: "postgresql.default.svc.cluster.local" 
-           - name: DB_NAME
-             value: dbname
-           - name: DB_USER
-             value: youruser
-           - name: DB_PASSWORD
-             valueFrom:
-               secretKeyRef:
-                 name: postgresql
-                 key: password
           ports:
             - name: http
               containerPort: {{ .Values.python.service.port }}
