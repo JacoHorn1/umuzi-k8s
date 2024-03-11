@@ -20,7 +20,6 @@ ingress:
   tls: 
    - secretName: nginx-tls-secret
      hosts:
-       - # what is the domain you should use here?
        - jacoh.k8s-course.co.za
 imagePullSecrets:
   - name: your-regcred
