@@ -15,7 +15,7 @@ ingress:
         - path: /api # add your prefix here for the backend
           pathType: Prefix
           service:
-            name: python-service # your backend service name
+            name: python # your backend service name
             port: 5000 # what port do you want to forward traffic on your backend?
   tls: 
    - secretName: nginx-tls-secret
