@@ -43,14 +43,5 @@ spec:
             httpGet:
               path: /
               port: http
-          # mounting the ConfigMap
-          volumeMounts:
-            - name: python-config-volume
-              mountPath: {{ .Values.python.mountPath}}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      # mounting the ConfigMap
-      volumes:
-        - name: python-config-volume
-          configMap:
-            name: python-config
