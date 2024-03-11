@@ -20,6 +20,17 @@ ingress:
   tls: 
    - secretName: nginx-tls-secret
      hosts:
+       - # what is the domain you should use here?
        - jacoh.k8s-course.co.za
 imagePullSecrets:
   - name: your-regcred
+nginx:
+  name: nginx
+  service:
+    type: ClusterIP
+    port: 80
+python:
+  name: python-service
+  service:
+    type: ClusterIP
+    port: 5000
