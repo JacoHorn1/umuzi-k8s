@@ -26,7 +26,7 @@ imagePullSecrets:
 nginx:
   image:
     repository: harbor.jacoh.k8s-course.co.za/application/nginx
-    tag: v2
+    tag: v4
   replicaCount: 1
   name: nginx
   serverName: jacoh.k8s-course.co.za
@@ -47,7 +47,23 @@ resources:
     cpu: 100m
     memory: 128Mi 
 python:
-  name: python-service
-  service:
+  image:
+    repository: harbor.jacoh.k8s-course.co.za/application/python
+    tag: v2
+  name: nginx
+  name: python
+  envs:
+    - name: DB_HOST
+      value: "postgresql.default.svc.cluster.local" 
+    - name: DB_NAME
+      value: dbname
+    - name: DB_USER
+      value: youruser
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: postgresql
+          key: password
+  service: 
     type: ClusterIP
     port: 5000
